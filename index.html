@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="hr"> 
+    <head>
+        <title>Speck Academy 2023</title>
+        <meta charset="UTF-8">
+        <meta name="Autor" content="Karla Medenjak">
+        <meta name="Opis" content="Zadatak za Speck Academy">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="kmedenjak.css" rel="stylesheet" type="text/css">
+    </head>
+
+     
+    <body onload="onLoad()">
+        <div class="div1">
+            <h1>My technologies</h1>
+            <br>
+            <form id="forma">
+                <input type="text" class="input" id="unos" placeholder="Enter new technology...">
+                <button class="buttonAdd" id="Add" type='button'>Add</button>
+                <button class="removeAll" id="remove" onclick="remove()">Remove all items</button>
+            </form>
+        </div>
+
+        <div class='auto-grid' style="text-align: center; color: #3a3a3a; font-weight: bold;">
+            <div id="content"></div>
+        </div>
+
+        <script>
+
+            var grid = document.getElementById('content');
+            document.getElementById('Add').addEventListener('click', addElement);
+
+            function onLoad(){
+                if (grid.style.display === "none") {
+                    grid.style.display = "grid";
+                } else {
+                    grid.style.display = "none";
+                }
+            }
+
+            function remove(){
+                grid.remove();
+            }
+
+            document.onkeydown=function(){
+                if(window.event.keyCode=='13'){
+                    event.preventDefault();
+                    addElement();
+                }
+            }
+
+            function addElement() {
+                var vrijednost = document.getElementById('unos').value;
+                document.getElementById('unos').value = '';
+                if(vrijednost == ''){ return
+                }
+                else{
+                    var add = document.createElement("div");
+                    add.setAttribute("id", "content");
+                    add.innerText = vrijednost;
+                    document.querySelector('.auto-grid').appendChild(add);
+                }
+            }
+            
+          </script>
+    </body>
+</html>
